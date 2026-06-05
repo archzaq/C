@@ -5,6 +5,7 @@
 /* Author:  Zac Reeves
  * Created: 06-01-26
  * Updated: 06-04-26
+ * Version: 1.0
  * Desc: This program's purpose is to convert a decimal string to binary.
  *       Takes the number from the command line.
  */
