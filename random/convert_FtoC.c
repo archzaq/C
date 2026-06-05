@@ -4,12 +4,13 @@
 /* Author: Zac Reeves
  * Created: 06-01-26
  * Updated: 06-05-26
- * Version: 1.1
+ * Version: 1.2
  * Desc: Convert Fahrenheit to Celsius
+ *       Takes min, max, and step from command line
  */
 
 void usage(char *argv[]) {
-    printf("\nUsage: %s <min number> <max number> <step (optional)>\n\n", argv[0]);
+    printf("\nUsage: %s <min> <max> <step (optional)>\n\n", argv[0]);
 }
 
 int main(int argc, char *argv[]) {
@@ -21,8 +22,12 @@ int main(int argc, char *argv[]) {
         return 1;
     } else if (argc == 3) {
         step = 1;
-    } else {
+    } else if (argc == 4) {
         step = atoi(argv[3]);
+    } else {
+        printf("\nToo many arguments!\n");
+        usage(&argv[0]);
+        return 1;
     }
 
     lower = atoi(argv[1]);
