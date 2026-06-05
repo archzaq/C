@@ -1,13 +1,47 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
 
-/* Author: Zac Reeves
+/* Author:  Zac Reeves
  * Created: 06-01-26
- * Updated: 06-01-26
- * Desc: This program's purpose is to convert a binary string to decimal
- * as well as convert decimal string to binary
+ * Updated: 06-04-26
+ * Desc: This program's purpose is to convert a decimal string to binary.
+ *       Takes the number from the command line.
  */
 
-int main() {
-    printf("Beginning binary conversion\n");
+int convertBin(int num, char binaryArray[]) {
+    int count = 0;
+    int remain;
+    while ((num > 0) && (count < 31)) {
+        remain = num % 2;
+        num = num / 2;
+        binaryArray[30 - count] = remain + '0';
+        count++;
+    }
+    binaryArray[31] = '\0';
+    return count;
+}
+
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        printf("Usage: %s <number>\n", argv[0]);
+        return 1;
+    }
+
+    int initialNum = atoi(argv[1]);
+    char binaryArray[32];
+
+    printf("\nDecimal:\t%d\n", initialNum);
+    printf("Binary:\t\t");
+
+    if (initialNum < 0) {
+        printf("-");
+        initialNum = -initialNum;
+    }
+
+    int count = convertBin(initialNum, binaryArray);
+    assert(31 - count >= 0);
+    printf("%s\n\n", &binaryArray[31 - count]);
+
     return 0;
 }
