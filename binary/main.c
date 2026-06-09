@@ -4,11 +4,15 @@
 
 /* Author:  Zac Reeves
  * Created: 06-01-26
- * Updated: 06-04-26
- * Version: 1.0
+ * Updated: 06-09-26
+ * Version: 1.1
  * Desc: This program's purpose is to convert a decimal string to binary.
  *       Takes the number from the command line.
  */
+
+void usage(char *argv[]) {
+    printf("Usage: %s <number>\n", argv[0]);
+}
 
 int convertBin(int num, char binaryArray[]) {
     int count = 0;
@@ -25,7 +29,10 @@ int convertBin(int num, char binaryArray[]) {
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        printf("Usage: %s <number>\n", argv[0]);
+        usage(&argv[0]);
+        return 1;
+    } else if (argc > 2) {
+        usage(&argv[0]);
         return 1;
     }
 
