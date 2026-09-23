@@ -5,4 +5,4 @@ programCFileName="${programBinaryName}.c"
 
 [[ -z "${programCFileName}" ]] && printf "ERROR: Missing program name\n"
 
-clang -Wall -Wextra -Werror -g -o $programBinaryName $programCFileName && "./${programBinaryName}"; echo $? && rm "./${programBinaryName}"
+clang -Wall -Wextra -Werror -g -O0 -o $programBinaryName $programCFileName && "./${programBinaryName}"; echo $? && rm "./${programBinaryName}"
