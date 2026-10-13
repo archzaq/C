@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -x
+#!/usr/bin/bash -x
 
 programBinaryName="$1"
 programCFileName="${programBinaryName}.c"
